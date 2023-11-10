@@ -45,7 +45,7 @@ public class Alumno implements Serializable{
 	@Column(name = "id_sec")
 	private Integer idSec;
 
-	@NotBlank
+
 	@Column(length = 11, unique = true, name = "alumno_id", nullable = true)
 	@Size(max = 11)
 	private String alumnoId;
@@ -102,7 +102,6 @@ public class Alumno implements Serializable{
 	private Date fechaModificacion;
 
 	@Column(length = 20, nullable = true, name = "usuario_modificacion")
-	@NotBlank
 	@Size(max = 20)
 	private String usuarioModificacion;
 

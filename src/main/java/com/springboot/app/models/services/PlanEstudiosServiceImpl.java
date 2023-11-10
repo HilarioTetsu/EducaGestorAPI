@@ -18,4 +18,12 @@ public class PlanEstudiosServiceImpl implements IPlanEstudiosService {
 
 	}
 
+	@Override
+	public PlanEstudios findById(Byte planEstudiosId) {
+		
+		PlanEstudios pe=planEstudiosDao.findById(planEstudiosId).orElse(null);
+		
+		return pe;
+	}
+
 }

@@ -108,7 +108,6 @@ public class Persona implements Serializable{
 	private Date fechaModificacion;
 	
 	@Column(length = 20,nullable = true,name="usuario_modificacion")
-	@NotBlank
 	@Size(max = 20)
 	private String usuarioModificacion;
 	
