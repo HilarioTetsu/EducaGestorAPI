@@ -6,6 +6,7 @@ import java.util.NoSuchElementException;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.springboot.app.models.dao.IAlumnoDao;
@@ -34,7 +35,8 @@ public class AlumnoServiceImpl implements IAlumnoService {
 	@Autowired
 	private IPersonaService personaService;
 	
-
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
 	
 
 	
@@ -67,7 +69,7 @@ public class AlumnoServiceImpl implements IAlumnoService {
 		persona.setApellidoPaterno(dto.getApellidoPaterno());
 		persona.setTelefono(dto.getTelefono());
 		persona.setEmail(dto.getEmail());
-		persona.setPassword(dto.getPassword());
+		persona.setPassword(passwordEncoder.encode(dto.getPassword()));
 		persona.setDireccion(dto.getDireccion());
 		persona.setCodigoPostal(dto.getCodigoPostal());
 		persona.setFechaNac(dto.getFechaNac());
@@ -75,6 +77,7 @@ public class AlumnoServiceImpl implements IAlumnoService {
 		persona.setUsuarioCreacion("ADMIN");
 		persona.setStatus(Constants.STATUS_ACTIVO);
 		persona.setRole("ROLE_ALUMNO");
+		persona.setEnabled(Constants.ENABLED);
 		personaService.save(persona);
 		
 		alumno.setPersona(persona);
